@@ -12,8 +12,8 @@ require_once $conf->root_path.'/app/CalcCredResult.class.php';
 
 
 
-/** Kontroler kalkulatora
- * @author Przemysław Kudłacik
+/** Kontroler kalkulatora Kredytowego
+ * @author Marcel Smarczyk
  *
  */
 class CalcCredCtrl {
@@ -123,12 +123,6 @@ class CalcCredCtrl {
 
 						$miesiecznaStopaOprocentowania = ($this->form->Oprocentowanie/100) / 12; 
 						$this->result->result =$this->form->KwotaKredytu * $miesiecznaStopaOprocentowania * (pow(1 + $miesiecznaStopaOprocentowania, $this->form->Lata  * 12)) / (pow(1 + $miesiecznaStopaOprocentowania, $this->form->Lata  * 12) - 1);
-					
-
-
-
-
-
 			
 			$this->messages->addInfo('Wykonano obliczenia.');
 		}
@@ -160,18 +154,3 @@ class CalcCredCtrl {
 		$smarty->display($conf->root_path.'/app/calcCred.html');
 	}
 }
-
-
-// $smarty->assign('app_url',_APP_URL);
-// $smarty->assign('root_path',_ROOT_PATH);
-// $smarty->assign('page_title','Kalkulator Kredytowy');
-// $smarty->assign('page_description',' ');
-// $smarty->assign('page_header','Szablony Smarty');
-
-// $smarty->assign('hide_intro',$hide_intro);
-
-// //pozostałe zmienne niekoniecznie muszą istnieć, dlatego sprawdzamy aby nie otrzymać ostrzeżenia
-// $smarty->assign('form',$form);
-// $smarty->assign('result',$result);
-// $smarty->assign('messages',$msgs);
-// $smarty->assign('infos',$infos);

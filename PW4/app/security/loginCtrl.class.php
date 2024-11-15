@@ -11,8 +11,8 @@ require_once $conf->root_path.'/app/security/loginResult.class.php';
 
 
 
-/** Kontroler kalkulatora
- * @author Przemysław Kudłacik
+/** Kontroler Strony logowania
+ * @author Marcel Smarczyk
  *
  */
 class loginCtrl {
