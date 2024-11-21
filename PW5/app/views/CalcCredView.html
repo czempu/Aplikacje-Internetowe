@@ -1,0 +1,61 @@
+{extends file="main.html"}
+{* przy zdefiniowanych folderach nie trzeba już podawać pełnej ścieżki *}
+
+{block name=footer}przykładowa tresć stopki wpisana do szablonu głównego z szablonu kalkulatora{/block}
+
+{block name=content}
+
+<h3>kalkulator Kredytowy</h2>
+
+
+<form class="pure-form pure-form-stacked" action="{$conf->action_root}calcCredCompute" method="post">
+	<fieldset>
+		<label for="KwotaKredytu">Kwota Kredytu</label>
+		<input id="KwotaKredytu" type="text" placeholder="Kwota Kredytu" name="KwotaKredytu" value="{$form->KwotaKredytu}">
+
+
+		<label for="Oprocentowanie">Oprocentowanie</label>
+		<input id="Oprocentowanie" type="text" placeholder="Oprocentowanie" name="Oprocentowanie" value="{$form->Oprocentowanie}">
+					
+		<label for="Lata">Lata</label>
+		<input id="Lata" type="text" placeholder="Lata" name="Lata" value="{$form->Lata}">
+	</fieldset>
+	<button type="submit" class="pure-button pure-button-primary">Oblicz</button>
+</form>
+
+<div class="messages">
+
+{* wyświeltenie listy błędów, jeśli istnieją *}
+{if $msgs->isError()}
+	<h4>Wystąpiły błędy: </h4>
+	<ol class="err">
+	{foreach $msgs->getErrors() as $err}
+	{strip}
+		<li>{$err}</li>
+	{/strip}
+	{/foreach}
+	</ol>
+{/if}
+
+{* wyświeltenie listy informacji, jeśli istnieją *}
+{if $msgs->isInfo()}
+	<h4>Informacje: </h4>
+	<ol class="inf">
+	{foreach $msgs->getInfos() as $inf}
+	{strip}
+		<li>{$inf}</li>
+	{/strip}
+	{/foreach}
+	</ol>
+{/if}
+
+{if isset($res->result)}
+	<h4>Wynik</h4>
+	<p class="res">
+	{$res->result}
+	</p>
+{/if}
+
+</div>
+
+{/block}
